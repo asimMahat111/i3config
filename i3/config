@@ -148,6 +148,19 @@ bindsym $mod+Shift+8 move container to workspace number $ws8
 bindsym $mod+Shift+9 move container to workspace number $ws9
 bindsym $mod+Shift+0 move container to workspace number $ws10
 
+
+# Screenshots
+bindsym Print exec --no-startup-id maim "/home/$USER/Pictures/$(date).png"
+bindsym $mod+Print exec --no-startup-id maim --window $(xdotool getactivewindow) "/home/$USER/Pictures/$(date).png"
+bindsym Shift+Print exec --no-startup-id maim --select "/home/$USER/Pictures/$(date).png"
+
+## Clipboard Screenshots
+bindsym Ctrl+Print exec --no-startup-id maim | xclip -selection clipboard -t image/png
+bindsym Ctrl+$mod+Print exec --no-startup-id maim --window $(xdotool getactivewindow) | xclip -selection clipboard -t image/png
+bindsym Ctrl+Shift+Print exec --no-startup-id maim --select | xclip -selection clipboard -t image/png
+
+
+
 #shortcuts to open in specific workspace
 #for_window [class="firefox"] move to workspace $ws3 ;exec --no-startup-id i3-msg workspace $ws3
 for_window [class="chrome"] move to workspace $ws1 ;exec --no-startup-id i3-msg workspace $ws1
@@ -207,8 +220,8 @@ exec_always feh --bg-scale ~/Downloads/wallpaper.jpg
 exec_always --no-startup-id $HOME/.config/polybar/launch.sh
 
 #shortcut to open
-#bindsym $mod+Shift+f exec --no-startup-id firefox
-bindsym $mod+Shift+g exec --no-startup-id chromium
+bindsym $mod+Shift+f exec --no-startup-id firefox
+#bindsym $mod+Shift+g exec --no-startup-id chroimun
 #bindsym $mod+Shift+v exec --no-startup-id code
 bindsym $mod+Shift+t exec --no-startup-id terminal
 #bindsym $mod+Shift+f exec --no-startup-id thunar
